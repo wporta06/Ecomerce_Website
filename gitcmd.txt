@@ -1,0 +1,65 @@
+>composer create-project --prefer-dist laravel/laravel:^7.0 ecom
+
+>cd ecom
+
+>composer require laravel/ui:^2.4
+
+++++++++++++++++++++++
+EP2: we creat the tables,add tables colones in migration file, add $fillable and relation in there viewers, seeder & factory to inser fake data
+
+>php artisan ui vue --auth
+
+>npm install && npm run dev
+
+>php artisan serve
+
+>php artisan make:model Category -a   //  creat categories_table
+
+>php artisan make:model Product -a    //  creat product_table
+
+>php artisan make:model Order -a     //  creat order_table
+
+>php artisan make:seeder UsersTableSeeder 	//  creat a seeder for Userstable
+
+>php artisan make:model Admin -m		//  creat a model for Admin
+
+>php artisan make:seeder AdminTableSeeder	//  creat a seeder for Admin
+
+>php artisan make:factory AdminFactory		//  creat a factory for Admin
+
+
+=====================
+you can delet from factories, emails verification you can remove it 
+
+++++++++++++++++++++++
+EP3: 	we create emails folder & add creat active_user_account.blade.php and put it in views folder
+
+>php artisan make:controller ActivationController   //create controler for email
+
+>php artisan make:mail ActivateYourAccount     //for create ActivateYourAccount class with folder mail
+
+++++++++++++++++++++++
+EP4: we add alerts.blade.php in layout folder for showing alert (cody3), and we incud it in app.blade.php
+
+++++++++++++++++++++++
+EP5: we modifie in home.blade.php to show products and catrgory
+     we modifie in index of HomeControler.php
+
+++++++++++++++++++++++
+EP8: we add product folder and put on it show.blade.php
+
++++++++++++++++++++++++++++++++
+EP9: >composer require "darryldecode/cart"  		// from github
+
+     >php artisan make:controller CartController	//we creat CartController
+
+
+
+
+
+
+
+
+=============================== cody4 ================================= 
+
+
