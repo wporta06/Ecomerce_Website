@@ -32,4 +32,16 @@ Route::get('/cart', 'CartController@index')->name("cart.index");
 Route::post('/add/cart/{product}', 'CartController@addProductToCart')->name('add.cart');
 Route::put('/update/{product}', 'CartController@updateProductOnCart')->name('update.cart');
 Route::delete('/remove/{product}', 'CartController@removeProductFromCart')->name('remove.cart');
+// Route for admin
+Route::get('/admin', 'AdminController@index')->name('admin.index');
+Route::get('/admin/login', 'AdminController@showAdminLoginForm')->name('admin.login');
+Route::post('/admin/login', 'AdminController@adminLogin')->name('admin.login');
+Route::get('/admin/logout', 'AdminController@adminLogout')->name('admin.logout');
+
+Route::get('/admin/products', 'AdminController@getProducts')->name('admin.products');
+Route::get('/admin/orders', 'AdminController@getOrders')->name('admin.orders');
+
+// Route for Porduct
+Route::resource('orders', 'OrderController');
+
 

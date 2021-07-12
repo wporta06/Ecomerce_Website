@@ -53,6 +53,10 @@ EP9: >composer require "darryldecode/cart"  		// from github
 
      >php artisan make:controller CartController	//we creat CartController
 
++++++++++++++++++++++++++++++++
+EP14:
+in Handler.php: guest !! dont'nt know
+
 
 
 

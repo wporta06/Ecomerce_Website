@@ -12,7 +12,7 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-
+    // defaults guard use users
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
@@ -39,6 +39,11 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+            // we add here for selecting the the table admin
+        'admin' => [ //guard("admin")
+            'driver' => 'session',
+            'provider' => 'admins', //in table admins
         ],
 
         'api' => [
@@ -70,6 +75,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+            // we add here for selecting the model
+        'admins' => [ //provider admins
+            'driver' => 'eloquent',
+            'model' => App\Admin::class, //model Admin
+        ]
 
         // 'users' => [
         //     'driver' => 'database',

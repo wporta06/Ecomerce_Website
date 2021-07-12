@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->decimal("price",8,2)->default(0);
             $table->decimal("old_price",8,2)->default(0); //8 NUMBER & 2 AFTER ,
             $table->integer("inStock")->default(0);
-            $table->integer("qty")->default(0);
+            // $table->integer("qty")->default(0);
             $table->string("image");
             $table->bigInteger("category_id")->unsigned(); //to evode error
 

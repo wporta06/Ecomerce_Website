@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    // must be loged admin
+    public function __construct(){
+        $this->middleware('auth:admin')->except(['index','show']); //need to be logged in as admin, except seeing index() and show() 
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +29,8 @@ class ProductController extends Controller
         ]);
     }
 
+
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -28,7 +38,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create')->with([
+            'categories' =>Category::all()
+        ]);
     }
 
     /**
@@ -39,7 +51,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        //to add product
+        if ($request->has("image")) {
+            $file = $request->image;
+            $imageName = "images/allproducts/" . time() . "_" . $file->getClientOriginalName();
+            $file->move(public_path("images/allproducts"), $imageName);
+            $title = $request->title;
+
+            Product::create([
+                "title" => $title,
+                "slug" => Str::slug($title),
+                "description" => $request->description,
+                "price" => $request->price,
+                "old_price" => $request->old_price,
+                "inStock" => $request->inStock,
+                "category_id" => $request->category_id,
+                "image" => $imageName,
+            ]);
+            return redirect()->route("admin.products")->withSuccess("Product added");
+        }
     }
 
     /**
@@ -50,9 +81,9 @@ class ProductController extends Controller
      */
     
     // to show the product (for user)
-    public function show(Product $product)
-    {
-        return view("products.show")->with([  //go to folder products in show show.blade.php fille
+    public function show(Product $product){
+        //go to folder products in show show.blade.php fille
+        return view("products.show")->with([ 
             "product" => $product
         ]);
     }
@@ -65,7 +96,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view("admin.products.editproducts")->with([
+            "product" => $product,
+            "categories" => Category::all()
+        ]);
     }
 
     /**
@@ -77,7 +111,38 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $this->validate($request, [
+            "title" => "required|min:3",
+            "description" => "required|min:5",
+            "image" => "image|mimes:png,jpg,jpeg|max:2048",
+            "price" => "required|numeric",
+            "category_id" => "required|numeric",
+        ]);
+
+        //update data
+        if ($request->has("image")) {
+            $image_path = public_path("images/allproducts/" . $product->image);
+            if (File::exists($image_path)) {
+                unlink($image_path);
+            }
+            $file = $request->image;
+            $imageName = "images/allproducts/" . time() . "_" . $file->getClientOriginalName();
+            $file->move(public_path("images/allproducts"), $imageName);
+            $product->image = $imageName;
+        }
+        $title = $request->title;
+        $product->update([
+            "title" => $title,
+            "slug" => Str::slug($title),
+            "description" => $request->description,
+            "price" => $request->price,
+            "old_price" => $request->old_price,
+            "inStock" => $request->inStock,
+            "category_id" => $request->category_id,
+            "image" =>  $product->image,
+        ]);
+        return redirect()->route("admin.products")
+            ->withSuccess("Product updated");
     }
 
     /**
@@ -88,6 +153,13 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+         //delete data
+         $image_path = public_path("images/allproducts/" . $product->image);
+         if (File::exists($image_path)) {
+             unlink($image_path);
+         }
+         $product->delete();
+         return redirect()->route("admin.products")
+             ->withSuccess("Product deleted");
     }
 }
