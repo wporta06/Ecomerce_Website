@@ -52,10 +52,11 @@ class Handler extends ExceptionHandler
     {
         // to redirect to admin/login
         if (!auth()->guard("admin")->check()) {
-            if ($request->is("admin") || $request->is('admin/*')) {
-                return redirect()->guest("/admin/login");
+            if ( $request->is('admindashboard') || $request->is("admin") ||  $request->is('admin/*')) {
+                return redirect()->guest("/adminlogin");
             }
         }
         return parent::render($request, $exception);
     }
+
 }

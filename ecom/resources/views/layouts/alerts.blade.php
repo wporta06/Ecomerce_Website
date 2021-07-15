@@ -10,8 +10,8 @@
 @if(session()->has("success"))
     <div class="alert alert-success alert-dismissible fade show">
         <strong>{{ session()->get("success") }}</strong>
-        <button type="button" class="close">
-            <span>&times;</span>
+        <button type="button" class="close" >
+            <span aria-label="close">&times;</span>
         </button>
     </div>
 @endif

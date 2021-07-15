@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
-use App\Product;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller 
@@ -11,64 +9,40 @@ class AdminController extends Controller
     // need to modifie 'guards' and 'providers' in auth.php in config file
     // need to be admin to see index and do logout (except)
     public function __construct(){
-        $this->middleware('auth:admin')->except(["showAdminLoginForm","adminLogin"]); //"auth:admin" mean he must be loged to see m3ada index & adminLogout, "guest:admin" can without login as admin
+        $this->middleware('auth:admin')->except(["showLoginFromofAdmin","checkLoginofAdmin"]); //"auth:admin" mean he must be loged to see m3ada index & logoutAdmin, "guest:admin" can without login as admin
     }
 
-    public function index(){
-        return view("admin.index")->with([ //to use them in 
-            "products" => Product::all(), //to show the in admin allproduct 
-            "orders" => Order::all(),
-        ]);
-    }
 
-    public function showAdminLoginForm(){
+    public function showLoginFromofAdmin(){
         if(auth()->guard('admin')->check()){
-            return redirect('/admin');
+            // return redirect('/admindashboard');
+            return redirect()->route("products_route");
         }
 
         return view('admin.auth.login');
     }
 
-    public function adminLogin(Request $request){
-        $this->validate($request,[
-            'email'=>'required|email',
-            'password'=>'required|min:4'
-        ]);
+    public function checkLoginofAdmin(Request $request){
+      
             // for guard we add it in auth.php
         if(auth()->guard("admin")->attempt([
             'email'=>$request->email,
-            'password'=>$request->password
+            'password'=>$request->password,
         ], $request->get("remember"))){
-            // return redirect("/admin");
-            return redirect()->route("admin.index");
+            // return redirect("/admin dashboard"); 
+            return redirect()->route("products_route");
         }else{
-            return redirect('/admin/login');
+            // return redirect('/adminlogin');
+            return redirect()->route("adminloginform_route");
         }
     }
 
     // for admin logout
-    public function adminLogout(){
+    public function logoutAdmin(){
         auth()->guard('admin')->logout();
-        return redirect()->route("admin.login");
+        return redirect()->route("adminloginform_route");
     }
 
 // !   ======================
-
-    public function getProducts(){   //move this to productcontroller and change rout
-        
-        return view('admin.products.index')->with([
-            "products" => Product::latest()->paginate(7)
-        ]);
-    }
-
-    public function getOrders(){
-
-        return view('admin.orders.index')->with([
-            "orders" => Order::latest()->paginate(10)
-        ]);
-
-    }
-
-
     
 }

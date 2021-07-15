@@ -14,6 +14,7 @@ class Order extends Model
     public function user(){         //relation with who?, that order belongs to user or has relation with order
         return $this->belongsTo(User::class);
     }
+
 }
 
 

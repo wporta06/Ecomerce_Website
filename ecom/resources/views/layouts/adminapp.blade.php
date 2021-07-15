@@ -29,10 +29,10 @@
 <body>
     {{-- =====================  navebar  ======================= --}}
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+        <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm ">
+            <div class="container ">
+                <a class="navbar-brand text-white font-weight-bold" href="{{ url('/admin') }}">
+                    My Admin Dashboard
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -51,35 +51,40 @@
                         <!-- Authentication Links -->
                         @guest {{-- if just guest show login and register --}}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Loginnn') }}</a>
+                                <a class="nav-link text-white " href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                         {{-- =====================  to test if the admin connected  ======================= --}}
-                           
-                            {{-- =====================  if the user connected show this ======================= --}}
+                            @if (auth()->guard('admin')->check())
                                 <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                                        Welcome, {{ auth()->guard('admin')->user()->name }}
+                                        <span class="font-weight-bold badge badge-pill badge-warning">{{$orders->count()}}</span>
                                     </a>
-
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
+                                        <a class="dropdown-item" href="{{ route('products_route') }}">
+                                            My Dashboard
+                                            <span class="font-weight-bold badge badge-pill badge-warning"> {{$products->count()}}</span>
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('orders_route') }}">
+                                            My Orders
+                                            <span class="font-weight-bold badge badge-pill badge-warning"> {{$orders->count()}}</span>
+                                                                                </a>
+                                        <a class="dropdown-item" href="{{ route('adminlogout_route') }}">
                                             {{ __('Logout') }}
                                         </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
                                     </div>
                                 </li>
+                            @else
+                            {{-- =====================  if the user connected show this ======================= --}}
+                                
+                            @endif
                         @endguest
                     </ul>
                 </div>

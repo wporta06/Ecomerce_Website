@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Order;
 use App\Product;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -12,51 +13,50 @@ class ProductController extends Controller
 {
 
     // must be loged admin
-    public function __construct(){
-        $this->middleware('auth:admin')->except(['index','show']); //need to be logged in as admin, except seeing index() and show() 
+    public function __construct()
+    {
+        $this->middleware('auth:admin')->except(['index', 'show']); //need to be logged in as admin, except seeing index() and show() 
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    // to show product panel (for admin after sign in )
+    public function showProductsPanel()
+    {   //move this to productcontroller and change rout
+
+        return view('admin.products.showproducts')->with([
+            "products" => Product::latest()->paginate(100), //to show all product + budg
+            "orders" => Order::latest()->paginate(100)   //to show budg of number of orders
+
+        ]);
+    }
+
+    // to show the product (for user after sign in )
+    public function show(Product $product)
     {
-        return view('home')->with([
-            "products" => Product::latest()->paginate(10), //get 10 products 
-            "categories" => Category::has("products")->get(), // get just category that has product not empty
+        //go to folder products in show show.blade.php fille
+        return view("products.show")->with([
+            "product" => $product
         ]);
     }
 
 
-    
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('admin.products.create')->with([
-            'categories' =>Category::all()
+        return view('admin.products.createproduct')->with([
+            "products" => Product::latest()->paginate(100), //to show product budg
+            "orders" => Order::latest()->paginate(100),   //to show orders budg
+
+            'categories' => Category::all(),
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        
-        //to add product
+        //for adding product
         if ($request->has("image")) {
             $file = $request->image;
-            $imageName = "images/allproducts/" . time() . "_" . $file->getClientOriginalName();
-            $file->move(public_path("images/allproducts"), $imageName);
+            $theimageName = "images/allproducts/" . time() . "_" . $file->getClientOriginalName();
+            $file->move(public_path("images/allproducts"), $theimageName);
             $title = $request->title;
 
             Product::create([
@@ -67,68 +67,34 @@ class ProductController extends Controller
                 "old_price" => $request->old_price,
                 "inStock" => $request->inStock,
                 "category_id" => $request->category_id,
-                "image" => $imageName,
+                "image" => $theimageName,
             ]);
-            return redirect()->route("admin.products")->withSuccess("Product added");
+            return redirect()->route("products_route")->withSuccess("Product added");
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    
-    // to show the product (for user)
-    public function show(Product $product){
-        //go to folder products in show show.blade.php fille
-        return view("products.show")->with([ 
-            "product" => $product
-        ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
-        return view("admin.products.editproducts")->with([
-            "product" => $product,
-            "categories" => Category::all()
+        return view("admin.products.editproduct")->with([
+            "theproduct" => $product,
+            "thecategories" => Category::all(),
+
+            "products" => Product::latest()->paginate(100), //to show product budg
+            "orders" => Order::latest()->paginate(100),   //to show orders budg
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Product $product)
     {
-        $this->validate($request, [
-            "title" => "required|min:3",
-            "description" => "required|min:5",
-            "image" => "image|mimes:png,jpg,jpeg|max:2048",
-            "price" => "required|numeric",
-            "category_id" => "required|numeric",
-        ]);
 
         //update data
         if ($request->has("image")) {
             $image_path = public_path("images/allproducts/" . $product->image);
-            if (File::exists($image_path)) {
-                unlink($image_path);
-            }
             $file = $request->image;
-            $imageName = "images/allproducts/" . time() . "_" . $file->getClientOriginalName();
-            $file->move(public_path("images/allproducts"), $imageName);
-            $product->image = $imageName;
+            $theimageName = "images/allproducts/" . time() . "_" . $file->getClientOriginalName();
+            $file->move(public_path("images/allproducts"), $theimageName);
+            $product->image = $theimageName;
         }
         $title = $request->title;
         $product->update([
@@ -141,25 +107,19 @@ class ProductController extends Controller
             "category_id" => $request->category_id,
             "image" =>  $product->image,
         ]);
-        return redirect()->route("admin.products")
-            ->withSuccess("Product updated");
+        return redirect()->route("products_route")->withSuccess("Product updated");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Product $product)
     {
-         //delete data
-         $image_path = public_path("images/allproducts/" . $product->image);
-         if (File::exists($image_path)) {
-             unlink($image_path);
-         }
-         $product->delete();
-         return redirect()->route("admin.products")
-             ->withSuccess("Product deleted");
+        //delete data
+        $image_path = public_path("images/allproducts/" . $product->image);
+        if (File::exists($image_path)) {
+            unlink($image_path);
+        }
+        $product->delete();
+        return redirect()->route("products_route")
+            ->withSuccess("Product deleted");
     }
 }

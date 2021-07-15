@@ -8,21 +8,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');    //he comment this
-    }
+ 
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');    //i comment this
+    // }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
       // =============================== cody4 ================================= 
     public function index()
     {
@@ -32,13 +23,13 @@ class HomeController extends Controller
         ]);
     }
     
-    // show product by category 
+    // show product by category in home
     public function getProductByCategory(Category $category)
     {
        $products=$category->products()->paginate(10);
        
        return view('home')->with([
-            "products" =>$products,                          
+            "products" =>$products,                       
             "categories" => Category::has("products")->get(), // get just category that has product not empty
        ]);
     }
