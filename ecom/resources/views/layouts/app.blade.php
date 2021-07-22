@@ -26,19 +26,30 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body >
     {{-- =====================  navebar  ======================= --}}
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+    <div id="app" class="navbarr">
+        <nav class="navbar navbarr navbar-expand-md  navbar-light  shadow-sm bg-transparent" >
+            <div class="container" >
+               
+                <a class="navbar-brand font-weight-bold" href="{{ url('/') }}">
+                    <img src="{{asset('assets/logo.png')}}" width="70" height="70" alt="">
+                    HIKEZ
+                  </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      <a class="nav-item nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
+                      <a class="nav-item nav-link {{ (request()->is('products/category/hiking-bags')) ? 'active' : '' }}" href="{{ url('http://127.0.0.1:8000/products/category/hiking-bags') }}">SHOP</a>
+                      <a class="nav-item nav-link {{ (request()->is('about')) ? 'active' : '' }}" href="{{ url('/about') }}">ABOUT</a>
+                    </div>
+                  </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -51,7 +62,7 @@
                         <!-- Authentication Links -->
                         @guest {{-- if just guest show login and register --}}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Loginnn') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
@@ -95,10 +106,25 @@
         </div>
         {{-- ================================================================ --}}
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
 </body>
+ {{-- footer --}}
+ <footer class="bg-light text-center text-white bg-dark mt-5">
 
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="https://HIKEZ.com.com/">HIKEZ.com</a>
+
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998;" href="#!" role="button"><i
+                class="fab fa-facebook-f"></i></a>
+
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac;" href="#!" role="button"><i
+                class="fab fa-instagram"></i></a>
+    </div>
+    <!-- Copyright -->
+</footer>
 </html>

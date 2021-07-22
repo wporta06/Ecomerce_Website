@@ -22,13 +22,17 @@ class HomeController extends Controller
             "categories" => Category::has("products")->get(), // get just category that has product not empty
         ]);
     }
+    public function about()
+    {
+        return view('about');
+    }
     
     // show product by category in home
     public function getProductByCategory(Category $category)
     {
        $products=$category->products()->paginate(10);
        
-       return view('home')->with([
+       return view('products.showproductofcategory')->with([
             "products" =>$products,                       
             "categories" => Category::has("products")->get(), // get just category that has product not empty
        ]);

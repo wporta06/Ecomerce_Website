@@ -61,7 +61,6 @@
                                     </a>
                                 </td>
                                 <td>
-                                    {{-- asset() to tell that img is in puplic folder --}}
                                     <img src="{{ asset($product->image) }}" alt="{{ $product->title }}" width="60"
                                         height="60" class="img-fluid rounded">
                                 </td>

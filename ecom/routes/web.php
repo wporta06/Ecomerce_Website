@@ -22,6 +22,7 @@ Auth::routes();
 
 // Route for home  
 Route::get('/', 'HomeController@index')->name('home'); 
+Route::get('/about', 'HomeController@about')->name('about'); 
 
 // Route for Porduct
 Route::resource('products', 'ProductController');

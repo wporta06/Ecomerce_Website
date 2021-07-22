@@ -2,8 +2,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-3 p-5">
         <div class="row">
+             {{-- back bottom --}}
+             <a href="{{ url()->previous() }}" class="btn btn-dark my-3">
+                <i class="fas fa-arrow-left"></i>
+            </a>
             <div class="col-md-12 card p-3">
                 <h4 class="text-dark">Your cart</h4>
                 <table class="table table-hover">

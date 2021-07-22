@@ -32,7 +32,7 @@ class ProductController extends Controller
     // to show the product (for user after sign in )
     public function show(Product $product)
     {
-        //go to folder products in show show.blade.php fille
+        //go to folder products in show showproduct.blade.php fille
         return view("products.show")->with([
             "product" => $product
         ]);
