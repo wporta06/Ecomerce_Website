@@ -26,7 +26,7 @@
                             <tr>
                                 <td>
                                     <img src="{{ asset($item->associatedModel->image) }}" alt="{{ $item->title }}"
-                                        width="50" height="50" class="img-fluid rounded">
+                                        width="50" height="50" class="">
                                 </td>
                                 <td>
                                     {{ $item->name }}

@@ -20,6 +20,7 @@ class HomeController extends Controller
         return view('home')->with([
             "products" => Product::latest()->paginate(10), //get 10 products 
             "categories" => Category::has("products")->get(), // get just category that has product not empty
+   
         ]);
     }
     public function about()

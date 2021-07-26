@@ -49,6 +49,7 @@
                       <a class="nav-item nav-link {{ (request()->is('products/category/hiking-bags')) ? 'active' : '' }}" href="{{ url('http://127.0.0.1:8000/products/category/hiking-bags') }}">SHOP</a>
                       <a class="nav-item nav-link {{ (request()->is('about')) ? 'active' : '' }}" href="{{ url('/about') }}">ABOUT</a>
                     </div>
+                    
                   </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -74,9 +75,12 @@
                            
                             {{-- =====================  if the user connected show this ======================= --}}
                                 <li class="nav-item dropdown">
+                                    
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
+                                       
+
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -84,7 +88,10 @@
                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
-
+                                        <a class="dropdown-item " href="{{ url('/cart') }}" >
+                                            {{ __('My Card') }} <i class="fas fa-shopping-cart"></i>
+                                        </a>
+                                        
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">
                                             @csrf
@@ -115,7 +122,7 @@
  <footer class="bg-light text-center text-white bg-dark mt-5">
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="text-center p-3" style=" background-color: #fdbe10;">
         © 2021 Copyright:
         <a class="text-white" href="https://HIKEZ.com.com/">HIKEZ.com</a>
 

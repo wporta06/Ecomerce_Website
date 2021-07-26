@@ -7,11 +7,10 @@
                 <div class="card">
 
                     <div class="card-img-top">
-                        <img class="img-fluid " src="{{ asset($product->image) }}" alt="{{ $product->title }}"
+                        <img class="img-fluid rounded mx-auto d-block" src="{{ asset($product->image) }}" alt="{{ $product->title }}"
                             width="316" height="440">
                     </div>
                     <div class="card-body">
-
 
                     </div>
                 </div>
@@ -71,9 +70,6 @@
 
         </div>
     </div>
-
-
-
 
     {{-- =============================== --}}
 

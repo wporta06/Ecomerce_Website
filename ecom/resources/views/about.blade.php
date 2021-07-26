@@ -4,7 +4,7 @@
 
     
     {{-- about --}}
-    <div id="about" class="about-section">
+    <div id="about" class="about-section mt-2">
         <div class="about-image">
             <h1>About Us</h1>
             <p class="text">
@@ -16,6 +16,6 @@
     </div>
 
     {{-- image befor footer --}}
-    <img src="{{ asset('assets/slide2.jpg') }}" class="img-responsive " style="width:100%">
+    <img src="{{ asset('assets/hiking.jpg') }}" class="img-responsive " style="width:100%">
 
 @endsection

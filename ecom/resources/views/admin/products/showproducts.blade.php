@@ -62,7 +62,7 @@
                                 </td>
                                 <td>
                                     <img src="{{ asset($product->image) }}" alt="{{ $product->title }}" width="60"
-                                        height="60" class="img-fluid rounded">
+                                        height="60" class="">
                                 </td>
 
                                 <td>{{ $product->category->title }}</td>

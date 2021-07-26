@@ -11,24 +11,21 @@
 
 /* ============================================== */
 
-
-/* * {
-    background-color: rgb(255, 255, 255);
-} */
+.curved {
+    position: relative;
+    background: #037da6;
+    height: 116vh;
+    border-bottom-left-radius: 50% 11%;
+    border-bottom-right-radius: 50% 11%;
+}
 
 .navbarr {
     background-color: #ffffff00 !important;
 }
 
-
-/* body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-} */
-
 .hero-image {
     background-image: url("http://127.0.0.1:8000/assets/slide1.jpg");
-    background-color: #b80000;
+    background-color: #0fd8ce;
     height: 520px;
     background-position: center;
     background-repeat: no-repeat;
@@ -54,15 +51,6 @@
     font-family: "Open Sans", sans-serif;
     box-sizing: border-box;
 }
-
-
-/* body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f1f1f1;
-} */
 
 .about-section {
     background: url("http://127.0.0.1:8000/assets/pic.jpg") no-repeat left;
@@ -619,7 +607,7 @@ mark,
 
 .img-fluid {
     max-width: 100%;
-    height: auto;
+    height: 20em;
 }
 
 .img-thumbnail {
