@@ -46,7 +46,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                       <a class="nav-item nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
-                      <a class="nav-item nav-link {{ (request()->is('products/category/hiking-bags')) ? 'active' : '' }}" href="{{ url('http://127.0.0.1:8000/products/category/hiking-bags') }}">SHOP</a>
+                      <a class="nav-item nav-link {{ (request()->is('products/category/hiking-bags')) ? 'active' : '' }}" href="{{ url('http://127.0.0.1:8000/products/category/boots') }}">SHOP</a>
                       <a class="nav-item nav-link {{ (request()->is('about')) ? 'active' : '' }}" href="{{ url('/about') }}">ABOUT</a>
                     </div>
                     

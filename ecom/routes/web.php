@@ -47,4 +47,7 @@ Route::get('/adminorders', 'OrderController@showOrdersPanel')->name('orders_rout
 // Route for orders
 Route::resource('orders', 'OrderController');
 
+// PaypalPayments
+Route::get('/order-confirmation', 'OrderConfirmation@handlePayment')->name('order_confirmation');
+Route::put('/orderinfo/{created_at}', 'OrderConfirmation@updatee')->name('orders.updatee');
 

@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 {{-- back bottom --}}
-                <a href="{{ route('products_route') }}" class="btn btn-dark my-3">
+                <a href="{{ url()->previous() }}" class="btn btn-dark my-3">
                     <i class="fas fa-arrow-left"></i>
                 </a>
                 

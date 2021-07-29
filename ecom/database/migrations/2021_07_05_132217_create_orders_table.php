@@ -20,8 +20,12 @@ class CreateOrdersTable extends Migration
             $table->integer("qty");
             $table->decimal("price",8,2);
             $table->decimal("total",8,2);
-            $table->boolean("paid")->default(0);
+            // $table->boolean("paid")->default(0);
             $table->boolean("delivered")->default(0);
+            $table->string("note");
+            $table->string("name");
+            $table->string("phone");
+            $table->string("adresse");
 
             $table->timestamps();
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade"); //references id that is on users Table ondelete users delete also Table

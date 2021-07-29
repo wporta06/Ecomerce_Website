@@ -35,4 +35,7 @@ class OrderController extends Controller
         $order->update(["delivered"=>1]);
         return redirect()->route('orders_route')->withWarning("DELEVERED");
     }
+
+
+   
 }

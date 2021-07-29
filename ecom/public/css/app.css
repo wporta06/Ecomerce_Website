@@ -11,6 +11,16 @@
 
 /* ============================================== */
 
+
+/* for the thank you page */
+
+.thankyoupage {
+    background-image: url("http://127.0.0.1:8000/assets/thankyou.png");
+    height: 41em;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .curved {
     position: relative;
     background: #037da6;
@@ -20,7 +30,7 @@
 }
 
 .navbarr {
-    background-color: #ffffff00 !important;
+    background-color: #e3e2da !important;
 }
 
 .hero-image {
@@ -81,12 +91,27 @@
     margin-bottom: 40px;
 }
 
+@media screen and (max-width:517px) {
+    .about-section {
+        padding: 0;
+        margin-top: 108em;
+    }
+    /* .curved {
+        height: 333vh;
+    } */
+}
+
 @media screen and (max-width:600px) {
     .about-section {
         padding: 0;
+        /* margin-top: 41em; */
     }
     .about-image {
         padding: 60px;
+    }
+    .mycardd {
+        margin-left: 2em;
+        margin-right: 1em;
     }
 }
 
@@ -94,15 +119,25 @@
     .about-section {
         background-size: 100%;
         padding: 100px 40px;
+        margin-top: 31em;
     }
     .about-image {
         width: 100%;
     }
+    .mycardd {
+        margin-top: 1em;
+    }
+    .curved {
+        height: 229vh;
+    }
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1240px) {
     .about-image {
         padding: 80px;
+    }
+    .curved {
+        height: 142vh;
     }
 }
 

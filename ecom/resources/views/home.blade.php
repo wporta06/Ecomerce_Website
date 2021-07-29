@@ -81,7 +81,7 @@
             <br>
             <div class="row justify-content-between ">
                 <div class="shadow">
-                    <div class="card" id="a1" style="width: 15em;">
+                    <div class="card mycardd" id="a1" style="width: 15em;">
                         <img class="card-img-top mb-5 mt-5" src="{{ asset('images\allproducts\1626894418_b1.jpg') }}"
                             height="185">
                         <div class="card-body ">
@@ -95,13 +95,14 @@
                                         200.00 DH
                                     </strike>
                                 </span>
-                            </p><a href="http://127.0.0.1:8000/products/outback-500-gtx-hiking-boots-mens"
+                            </p>
+                            <a href="http://127.0.0.1:8000/products/outback-500-gtx-hiking-boots-mens"
                                 class="btn btn-warning btn-lg btn-block">BUY NOW</a>
                         </div>
                     </div>
                 </div>
                 <div class="shadow-sm">
-                    <div class="card" style="width: 15em;">
+                    <div class="card mycardd" style="width: 15em;">
                         <img class="card-img-top " src="{{ asset('images\allproducts\1626896262_b2.jpg') }}">
                         <div class="card-body">
                             <h5 class="card-title">Futura Vario 45 + 10 SL Pack - Women's</h5>
@@ -121,7 +122,7 @@
                     </div>
                 </div>
                 <div class="shadow">
-                    <div class="card " style="width: 15em;">
+                    <div class="card mycardd" style="width: 15em;">
                         <img class="card-img-top mb-5 mt-5" src="{{ asset('images\allproducts\1626894967_tent.jpg') }}"
                             height="185">
                         <div class="card-body">
@@ -142,7 +143,7 @@
                     </div>
                 </div>
                 <div class="shadow-sm">
-                    <div class="card" style="width: 15em;">
+                    <div class="card mycardd" style="width: 15em;">
                         <img class="card-img-top mb-5 mt-4" src="{{ asset('images\allproducts\1626896602_ad.jpg') }}"
                             height="188">
                         <div class="card-body">

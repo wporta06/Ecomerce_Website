@@ -16,11 +16,7 @@
                     </a>
                 @endforeach
 
-
             </div>
-
-           
-
 
             <div class="col">
                 <div class="row">
