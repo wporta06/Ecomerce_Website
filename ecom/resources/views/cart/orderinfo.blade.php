@@ -14,7 +14,7 @@
                             @csrf
                             @method("PUT")
                             <div class="form-group">
-                                <label class="font-weight-bold">Your Name</label>
+                                <label class="font-weight-bold">Your Full Name</label>
                                 <input name="fullname" class="form-control" required>
                             </div>
                             <div class="form-group">

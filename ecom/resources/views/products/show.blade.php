@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-4">
-        <div class="row">
+    <div class="container">
+        <div class="row ">
 
-            <div class="col-md-6">
+            <div class="col-md-6 mt-4">
                 <div class="card">
 
                     <div class="card-img-top" style="height: 34em; ">
@@ -22,11 +22,11 @@
                 <form action="{{ route('add.cart', $product->slug) }}" method="post"> {{-- this form will send the quantity qty to CartController.php --}}
                     @csrf
                     <div class="form-group">
-                        <h3 class="card-header text-center bg-warning">{{ $product->title }} </h3>
+                        <h3 class="card-header text-center bg-warning shadow-sm">{{ $product->title }} </h3>
                         <br>
                         <br>
                         <h5 class="text-muted">Price:</h5>
-                        <h2 class="d-flex flex-row justify-content-between align-items-center ">
+                        <h2 class="d-flex flex-row justify-content-between align-items-center  ">
                             <span>
                                 {{ $product->price }} DH
                             </span>
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-block bg-success text-dark font-weight-bold">
+                        <button type="submit" class="btn-lg btn-block bg-success text-dark font-weight-bold">
                             <i class="fas fa-cart-plus"></i>
                             Add to card
                         </button>
@@ -89,7 +89,7 @@
                 <div class="row justify-content-around">
 
 
-                    <div class="card" style="width: 13rem;">
+                    <div class="card mt-2" style="width: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">The North FaceTerra 65 Pack</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Free Shipping</h6>
@@ -112,7 +112,7 @@
                                 class="btn btn-warning btn-lg btn-block">Add To Card</a>
                         </div>
                     </div>
-                    <div class="card" style="width: 13rem;">
+                    <div class="card mt-2" style="width: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">The North FaceTerra 65 Pack</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Free Shipping</h6>
@@ -135,7 +135,7 @@
                                 class="btn btn-warning btn-lg btn-block">Add To Card</a>
                         </div>
                     </div>
-                    <div class="card" style="width: 13rem;">
+                    <div class="card mt-2" style="width: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">The North FaceTerra 65 Pack</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Free Shipping</h6>
@@ -158,7 +158,7 @@
                                 class="btn btn-warning btn-lg btn-block">Add To Card</a>
                         </div>
                     </div>
-                    <div class="card" style="width: 13rem;">
+                    <div class="card mt-2" style="width: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">The North FaceTerra 65 Pack</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Free Shipping</h6>
@@ -181,7 +181,7 @@
                                 class="btn btn-warning btn-lg btn-block">Add To Card</a>
                         </div>
                     </div>
-                    <div class="card" style="width: 13rem;">
+                    <div class="card mt-2" style="width: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">The North FaceTerra 65 Pack</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Free Shipping</h6>

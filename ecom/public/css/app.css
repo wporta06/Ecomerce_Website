@@ -91,31 +91,20 @@
     margin-bottom: 40px;
 }
 
-@media screen and (max-width:517px) {
-    .about-section {
-        padding: 0;
-        margin-top: 108em;
+@media screen and (max-width:439px) {
+    .nnb {
+        margin: auto;
+        width: 51%;
     }
-    /* .curved {
+    .about-container {
+        margin-top: 97em;
+    }
+    .curved {
         height: 333vh;
-    } */
-}
-
-@media screen and (max-width:600px) {
-    .about-section {
-        padding: 0;
-        /* margin-top: 41em; */
-    }
-    .about-image {
-        padding: 60px;
-    }
-    .mycardd {
-        margin-left: 2em;
-        margin-right: 1em;
     }
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:990px) {
     .about-section {
         background-size: 100%;
         padding: 100px 40px;
@@ -137,7 +126,7 @@
         padding: 80px;
     }
     .curved {
-        height: 142vh;
+        height: 100vh;
     }
 }
 
@@ -199,6 +188,7 @@ main,
 nav,
 section {
     display: block;
+    background-color: white;
 }
 
 body {
@@ -209,7 +199,7 @@ body {
     line-height: 1.6;
     color: #212529;
     text-align: left;
-    background-color: #f8fafc;
+    background-color: white;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {

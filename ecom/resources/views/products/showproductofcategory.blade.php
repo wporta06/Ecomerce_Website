@@ -2,23 +2,23 @@
 
 @section('content')
 
-    <div class="container mt-4">
+    <div class="container ">
         <div class="row">
-            <div class="col-12 col-sm-3">
-                <li class="list-group-item active">
-                    Categories
+            <div class="col-12 col-sm-3 mt-4 ">
+                <li class="list-group-item bg-warning font-weight-bold">
+                    Categories <i class="fas fa-hiking"></i>
                 </li>
                 @foreach ($categories as $category)
                     <a href="{{ route('category.products', $category->slug) }}"
-                        class="list-group-item list-group-item-action">
-                        {{ $category->title }}
+                        class="list-group-item list-group-item-action text-center ">
+                        <i class="fas fa-mountain"></i> {{ $category->title }}
                         ({{ $category->products->count() }}) {{-- to show num of products in category --}}
                     </a>
                 @endforeach
 
             </div>
 
-            <div class="col">
+            <div class="col mt-4">
                 <div class="row">
                     @foreach ($products as $product)
                         <div class="col-12 col-md-6 col-lg-4">

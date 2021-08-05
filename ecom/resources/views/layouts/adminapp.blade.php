@@ -93,7 +93,7 @@
 
         {{-- =============================== cody3 ================================= --}}
         {{-- for showing alert from alerts.blade.php --}}
-        <div class="row">
+        <div class="row bgg">
             <div class="col-md-8 mx-auto ">
                 @include('layouts.alerts') {{-- alerts.blade.php file --}}
             </div>
