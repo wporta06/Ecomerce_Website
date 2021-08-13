@@ -10,13 +10,13 @@ $factory->define(Product::class, function (Faker $faker) {
     
     $title = $faker->sentence();  //get title using fake info
     return [
-        "title" => $title,          //put it in title  or $faker->sentence();
+        "title" => $faker->sentence(),          //put it in title  or $faker->sentence();
         "slug" => Str::slug($title), //put it in slug too
         "description" => $faker->paragraph, 
-        "price" => $faker->numberBetween($min= 100,$max= 900), 
-        "old_price" => $faker->numberBetween($min= 100,$max= 900), 
-        "inStock" => $faker->numberBetween($min= 1,$max= 10), 
-        "image" => $faker->imageUrl($width= 640,$height= 480), 
-        "category_id" => $faker->numberBetween($min= 1,$max= 10)
+        "price" => $faker->numberBetween($min= 200,$max= 500), 
+        "inStock" => $faker->numberBetween($min= 1,$max= 300), 
+        "old_price" => $faker->numberBetween($min= 200,$max= 500), 
+        "category_id" => $faker->numberBetween($min= 1,$max= 5),
+        "image" => $faker->imageUrl($width= 600,$height= 400), 
     ];
 });

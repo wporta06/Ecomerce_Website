@@ -10,7 +10,7 @@ class Admin extends Authenticatable
 {
     use Notifiable;
 
-    // to told him when conecte to work with guard admin not the default guard in auth.php 
+    // to told him when connected to work with guard admin not the default guard in auth.php 
     protected $guard = "admin";
     /**
      * The attributes that are mass assignable.
@@ -30,12 +30,5 @@ class Admin extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+
 }

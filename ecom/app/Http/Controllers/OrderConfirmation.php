@@ -17,7 +17,6 @@ class OrderConfirmation extends Controller
 
     public function handlePayment()
     {
-        // $created_at=new Date();
         foreach (\Cart::getContent() as $item) {
             $order = Order::create([
                 "user_id" => auth()->user()->id,
@@ -27,6 +26,7 @@ class OrderConfirmation extends Controller
                 "total" => $item->price * $item->quantity,
 
             ]);
+            // get $created_at to send user order info
             $created_at = $order->created_at;
 
             \Cart::clear();
@@ -41,15 +41,19 @@ class OrderConfirmation extends Controller
     //    =========================================
     public function updatee(Request $request, $created_at)
     {
-        $orders = Order::where("created_at", $created_at);
-
-
-        $orders->update([
+        Order::where("created_at", $created_at)->update([
             "fullname" => $request->fullname,
             "address" => $request->address,
             "phonenumber" => $request->phonenumber,
             "note" => $request->note,
         ]);
+
+        // $orders->update([
+        //     "fullname" => $request->fullname,
+        //     "address" => $request->address,
+        //     "phonenumber" => $request->phonenumber,
+        //     "note" => $request->note,
+        // ]);
         return view("cart.thankyoupage");
     }
 }

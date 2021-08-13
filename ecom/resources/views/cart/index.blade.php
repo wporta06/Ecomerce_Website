@@ -9,7 +9,7 @@
         </a>
         <div class="row">
 
-            {{-- more items --}}
+        {{-- more items --}}
             <div class="col-md-5 shadow-sm p-3 mb-5 bg-white">
                 <div class="container">
                     <h4 class="text-dark">Suggested for You</h4>
@@ -89,9 +89,10 @@
                                             width="50" height="50" class="">
                                     </td>
                                     <td>
-                                        {{ $item->name }}
+                                        {{$item->associatedModel->title }} {{--  or $item->name  --}}
                                     </td>
                                     <td>
+                                        {{-- form to update my quantity --}}
                                         <form class="d-flex flex-row justify-content-center align-items-center"
                                             action="{{ route('update.cart', $item->associatedModel->slug) }}"
                                             method="post">
@@ -103,7 +104,7 @@
                                                     min="1" class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-sm btn-warning">
+                                                <button type="submit" class="btn btn-sm btn-primary">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </div>
@@ -116,6 +117,7 @@
                                         {{ $item->price * $item->quantity }} DH
                                     </td>
                                     <td>
+                                        {{-- form to delete my quantity --}}
                                         <form class="d-flex flex-row justify-content-center align-items-center"
                                             action="{{ route('remove.cart', $item->associatedModel->slug) }}"
                                             method="post">

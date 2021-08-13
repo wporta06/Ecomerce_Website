@@ -9,29 +9,21 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
  
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');    //i comment this
-    // }
-
       // =============================== cody4 ================================= 
     public function index()
     {
-        return view('home')->with([
-            "products" => Product::latest()->paginate(10), //get 10 products 
-            "categories" => Category::has("products")->get(), // get just category that has product not empty
-   
-        ]);
+        return view('home');
     }
+
     public function about()
     {
         return view('about');
     }
     
-    // show product by category in home
+    // show product by category
     public function getProductByCategory(Category $category)
     {
-       $products=$category->products()->paginate(10);
+       $products=$category->products()->paginate(20);
        
        return view('products.showproductofcategory')->with([
             "products" =>$products,                       

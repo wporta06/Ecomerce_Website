@@ -11,6 +11,10 @@ $factory->define(Order::class, function (Faker $faker) {
         "qty" => $faker->numberBetween($min = 1, $max= 10), 
         "price" => $faker->numberBetween($min= 100,$max= 900), 
         "total" => $faker->numberBetween($min= 1000,$max= 9000), 
-        "user_id" => $faker->numberBetween($min= 1,$max= 10)
+        "user_id" => $faker->numberBetween($min= 1,$max= 10),
+        "fullname" => $faker->sentence, 
+        "address" => $faker->sentence, 
+        "phonenumber" => $faker->sentence, 
+        "note" => $faker->sentence, 
     ];
 });

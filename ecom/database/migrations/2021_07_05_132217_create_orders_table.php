@@ -20,7 +20,6 @@ class CreateOrdersTable extends Migration
             $table->integer("qty");
             $table->decimal("price",8,2);
             $table->decimal("total",8,2);
-            // $table->boolean("paid")->default(0);
             $table->boolean("delivered")->default(0);
             $table->string("note");
             $table->string("name");

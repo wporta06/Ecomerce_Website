@@ -12,6 +12,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        factory(Category::class, 10)->create(); //to execute to DatabaseSeeder.php, need to import the model from App\Category ;)
+        factory(Category::class, 20)->create(); //to execute to DatabaseSeeder.php, need to import the model from App\Category ;)
     }
 }

@@ -25,9 +25,9 @@
     </div>
 @endif
 
-@if(session()->has("errorLink"))
+@if(session()->has("errorMsg"))
     <div class="alert alert-danger alert-dismissible fade show">
-         <strong>{!! session()->get("errorLink") !!}</strong>  {{-- !! to show html that we reseive --}}
+         <strong>{!! session()->get("errorMgs") !!}</strong>  {{-- !! to show html that we receive --}}
         <button type="button" class="close">
             <span>&times;</span>
         </button>

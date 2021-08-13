@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row ">
-
+            {{-- product image --}}
             <div class="col-md-6 mt-4">
                 <div class="card">
 
@@ -11,12 +11,9 @@
                         <img class="img-fluid rounded mx-auto d-block mt-4" src="{{ asset($product->image) }}"
                             alt="{{ $product->title }}" style="height: 34em; width: 28em;">
                     </div>
-                    <div class="card-body">
-
-                    </div>
                 </div>
             </div>
-
+            {{-- products order info --}}
             <div class="col-md-6 mt-2">
 
                 <form action="{{ route('add.cart', $product->slug) }}" method="post"> {{-- this form will send the quantity qty to CartController.php --}}
@@ -40,7 +37,8 @@
                             Quantity :
                         </label>
                         <input class="form-control" type="number" name="qty" id="qty" value="1" placeholder="Quantity"
-                            max="{{ $product->inStock }}" min="1" style="width: max-content;"> {{-- to get just the max of piece --}}
+                            max="{{ $product->inStock }}" min="1" required="required" style="width: max-content;">
+                        {{-- to get just the max of piece --}}
                     </div>
 
                     <div class="form-group">
@@ -82,7 +80,7 @@
         </div>
 
 
-{{-- More Products --}}
+        {{-- More Products --}}
         <div class="col-md-12 shadow-sm p-3 mt-5 bg-white">
             <div class="container">
                 <h4 class="text-dark">More Products</h4>
@@ -163,7 +161,8 @@
                             <h5 class="card-title">The North FaceTerra 65 Pack</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Free Shipping</h6>
                             <a href="http://127.0.0.1:8000/products/futura-vario-45-10-sl-pack-womens">
-                                <img class="img-fluid" src="{{ asset('images/allproducts/1627310901_1626894418_b1.jpg') }}"
+                                <img class="img-fluid"
+                                    src="{{ asset('images/allproducts/1627310901_1626894418_b1.jpg') }}"
                                     style="height: 13em;">
                             </a>
 

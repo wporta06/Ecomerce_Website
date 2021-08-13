@@ -2,11 +2,9 @@
 
 @section('content')
 
-    {{-- cover image --}}
+    {{-- cover image section --}}
     <div id="home" class="hero-image ">
         <div class="hero-text">
-            <br>
-            <br>
             <h1 style="font-size:50px">NEVER STOP EXPLORING</h1>
         </div>
     </div>
@@ -72,38 +70,34 @@
         <div class="container text-center ">
             <br>
             <h3 class="text-white">We love Hiking!</h3>
-            <p class="text-warning">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, laudantium quaerat
-                asperiores at velit
-                provident voluptatem, repellendus ipsam incidunt consequuntur quo deserunt! Ratione consequuntur
-                reprehenderit
-                voluptatem, optio aliquam quibusdam nobis!</p>
+           
             <br>
             <h1 class="text-white"><i class="fas fa-hiking text-warning"></i> BEST SELLER <i
                     class="fas fa-mountain text-warning"></i></h1>
             <br>
             <div class="row justify-content-between">
-                
-                    <div class="shadow nnb">
-                        <div class="card mycardd" id="a1" style="width: 15em;">
-                            <img class="card-img-top mb-5 mt-5" src="{{ asset('images\allproducts\1626894418_b1.jpg') }}"
-                                height="185">
-                            <div class="card-body ">
-                                <h5 class="card-title ">The North FaceTerra 65 Pack</h5>
-                                <p class="d-flex flex-row justify-content-between align-items-center">
-                                    <span class="text-muted">
-                                        150.00 DH
-                                    </span>
-                                    <span class="text-danger">
-                                        <strike>
-                                            200.00 DH
-                                        </strike>
-                                    </span>
-                                </p>
-                                <a href="http://127.0.0.1:8000/products/outback-500-gtx-hiking-boots-mens"
-                                    class="btn btn-warning btn-lg btn-block">BUY NOW</a>
-                            </div>
+
+                <div class="shadow nnb">
+                    <div class="card mycardd" id="a1" style="width: 15em;">
+                        <img class="card-img-top mb-5 mt-5" src="{{ asset('images\allproducts\1626894418_b1.jpg') }}"
+                            height="185">
+                        <div class="card-body ">
+                            <h5 class="card-title ">The North FaceTerra 65 Pack</h5>
+                            <p class="d-flex flex-row justify-content-between align-items-center">
+                                <span class="text-muted">
+                                    150.00 DH
+                                </span>
+                                <span class="text-danger">
+                                    <strike>
+                                        200.00 DH
+                                    </strike>
+                                </span>
+                            </p>
+                            <a href="http://127.0.0.1:8000/products/outback-500-gtx-hiking-boots-mens"
+                                class="btn btn-warning btn-lg btn-block">BUY NOW</a>
                         </div>
                     </div>
+                </div>
                 <div class="shadow-sm mycardd nnb">
                     <div class="card " style="width: 15em;">
                         <img class="card-img-top " src="{{ asset('images\allproducts\1626896262_b2.jpg') }}">
@@ -189,14 +183,8 @@
         </div>
     </div>
 
-    {{-- image befor footer --}}
+    {{-- image before footer --}}
     <img src="{{ asset('assets/slide2.jpg') }}" class="img-responsive " style="width:100%">
-
-    {{-- <script>
-        $("#a1").mouseover(function() {
-            $("#mmm").addClass("shadow-lg")
-        })
-    </script> --}}
 
 
 @endsection

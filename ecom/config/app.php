@@ -175,8 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Darryldecode\Cart\CartServiceProvider::class,
-        Srmklive\PayPal\Providers\PayPalServiceProvider::class
+        Darryldecode\Cart\CartServiceProvider::class
 
     ],
  
@@ -231,8 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
 
-        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
-        'Paypal' => Srklive\PayPal\Facades\PayPal::class
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
     ],
 
 ];

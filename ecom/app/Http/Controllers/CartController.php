@@ -14,32 +14,32 @@ class CartController extends Controller
         ]);
     }
 
-    // to add item to cart, we use the addtocart package from git 
+    // to add item to cart, i use the addtocart package from git 
     public function addProductToCart(Request $request,Product $product){
         \Cart::add(array(
             "id"=> $product->id,
             "name"=> $product->title,
             "price"=> $product->price,
-            "quantity"=> $request->qty, //quantity we will get it from the form show.blade.php
-            "attributes"=> array(),     // all other data,just if we want to add something else
-            "associatedModel"=> $product, //from git doc
+            "quantity"=> $request->qty,     //quantity i will get it from the form show.blade.php
+            
+            "associatedModel"=> $product, //from git doc to bring the image
 
         ));
         return redirect()->route("cart.index"); //index.dlade.php in cart folder
     }
 
-    // to update item in cart, we use this code from git doc 
+    // to update item in cart, i use this code from git doc 
     public function updateProductOnCart(Request $request,Product $product){
         \Cart::update($product->id,array(
             'quantity' => array(
-                'relative'=> false, //! get it from git doc 
+                'relative'=> false, // get it from git doc 
                 'value'=> $request->qty
             ),
         ));
         return redirect()->route("cart.index");
     }
 
-    // remove item from cart, we use this code from git doc 
+    // remove item from cart, i use this code from git doc 
     public function removeProductFromCart(Product $product){
         \Cart::remove($product->id);
         return redirect()->route("cart.index");

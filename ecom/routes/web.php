@@ -27,6 +27,7 @@ Route::get('/about', 'HomeController@about')->name('about');
 // Route for Porduct
 Route::resource('products', 'ProductController');
 
+// Route for category
 Route::get('products/category/{category}', 'HomeController@getProductByCategory')->name("category.products");
 
 // Route for cards ,(just index that show fast)
