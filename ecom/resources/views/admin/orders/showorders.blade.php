@@ -80,7 +80,7 @@
                 <div class=" text-center  font-weight-bold ">
 
                     <div class="h4 border shadow-lg p-3 bg-dark text-white rounded">
-                        Total : {{ \App\Order::sum('total') }} DH
+                        Total : {{$sum }} DH
                     </div>
                 </div>
 

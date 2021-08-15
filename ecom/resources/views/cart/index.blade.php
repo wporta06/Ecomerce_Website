@@ -117,7 +117,7 @@
                                         {{ $item->price * $item->quantity }} DH
                                     </td>
                                     <td>
-                                        {{-- form to delete my quantity --}}
+                                        {{-- form to delete --}}
                                         <form class="d-flex flex-row justify-content-center align-items-center"
                                             action="{{ route('remove.cart', $item->associatedModel->slug) }}"
                                             method="post">

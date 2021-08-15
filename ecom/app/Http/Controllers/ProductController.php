@@ -15,13 +15,12 @@ class ProductController extends Controller
     // must be loged admin
     public function __construct()
     {
-        $this->middleware('auth:admin')->except(['index', 'show']); //need to be logged in as admin, except seeing index() and show() 
+        $this->middleware('auth:admin')->except(['show']); //need to be logged in as admin, except seeing index() and show() 
     }
 
     // to show product panel (for admin after sign in )
     public function showProductsPanel()
-    {   //move this to productcontroller and change rout
-
+    {
         return view('admin.products.showproducts')->with([
             "products" => Product::latest()->paginate(100), //to show all product + budg
             "orders" => Order::latest()->paginate(100)   //to show budg of number of orders
@@ -29,7 +28,7 @@ class ProductController extends Controller
         ]);
     }
 
-    // to show the product (for user after sign in )
+    // to show the product (for user after sign in)
     public function show(Product $product)
     {
         //go to folder products in show showproduct.blade.php fille
@@ -41,6 +40,7 @@ class ProductController extends Controller
 
     public function create()
     {
+        // just to show create page
         return view('admin.products.createproduct')->with([
             "products" => Product::latest()->paginate(100), //to show product budg
             "orders" => Order::latest()->paginate(100),   //to show orders budg
@@ -90,7 +90,7 @@ class ProductController extends Controller
 
         //update data
         if ($request->has("image")) {
-            $image_path = public_path("images/allproducts/" . $product->image);
+        //    $image_path = public_path("images/allproducts/" . $product->image);
             $file = $request->image;
             $theimageName = "images/allproducts/" . time() . "_" . $file->getClientOriginalName();
             $file->move(public_path("images/allproducts"), $theimageName);

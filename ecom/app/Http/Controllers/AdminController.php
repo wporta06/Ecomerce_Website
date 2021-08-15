@@ -9,9 +9,11 @@ class AdminController extends Controller
     // need to modifie 'guards' and 'providers' in auth.php in config file
     // need to be admin to see index and do logout (except)
     public function __construct(){
-        $this->middleware('auth:admin')->except(["showLoginFromofAdmin","checkLoginofAdmin"]); //"auth:admin" mean he must be loged to see m3ada index & logoutAdmin, "guest:admin" can without login as admin
+        // $this->middleware('auth:admin')->except(["showLoginFromofAdmin","checkLoginofAdmin"]); //"auth:admin" mean he must be loged to see m3ada index & logoutAdmin, "guest:admin" can without login as admin
     }
 
+
+    
 
     public function showLoginFromofAdmin(){
         if(auth()->guard('admin')->check()){
@@ -28,7 +30,7 @@ class AdminController extends Controller
         if(auth()->guard("admin")->attempt([
             'email'=>$request->email,
             'password'=>$request->password,
-        ], $request->get("remember"))){
+        ])){
             // return redirect("/admin dashboard"); 
             return redirect()->route("products_route");
         }else{

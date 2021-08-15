@@ -40,7 +40,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-            // we add here for selecting the the table admin
+            // we add here for selecting the table admin
         'admin' => [ //guard("admin")
             'driver' => 'session',
             'provider' => 'admins', //in table admins

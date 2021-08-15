@@ -37,7 +37,6 @@ Route::put('/update/{product}', 'CartController@updateProductOnCart')->name('upd
 Route::delete('/remove/{product}', 'CartController@removeProductFromCart')->name('remove.cart');
 
 // Route for admin
-  //* Route::get('/admin', 'AdminController@getProducts')->name('admin.products');
 Route::get('/adminlogin', 'AdminController@showLoginFromofAdmin')->name('adminloginform_route');
 Route::post('/adminlogin', 'AdminController@checkLoginofAdmin')->name('adminlogin_route');
 Route::get('/adminlogout', 'AdminController@logoutAdmin')->name('adminlogout_route');
